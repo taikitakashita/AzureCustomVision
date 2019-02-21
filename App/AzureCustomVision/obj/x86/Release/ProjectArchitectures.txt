@@ -1,0 +1,2 @@
+C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\AzureCustomVision.csproj;x86
+C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj;x86
