@@ -36,7 +36,7 @@ public class CustomVisionTrainer : MonoBehaviour {
     /// <summary>
     /// タグの登録
     /// </summary>
-    internal enum Tags { マウス, キーボード }
+    internal enum Tags { ヘルメット着用, ヘルメット未着用 }
 
     /// <summary>
     /// 学習の際の処理のプロセス内容を表示するテキスト
@@ -75,7 +75,7 @@ public class CustomVisionTrainer : MonoBehaviour {
     /// </summary>
     internal void VerifyTag(string spokenTag)
     {
-        if (spokenTag == Tags.マウス.ToString() || spokenTag == Tags.キーボード.ToString())
+        if (spokenTag == Tags.ヘルメット着用.ToString() || spokenTag == Tags.ヘルメット未着用.ToString())
         {
             trainingUI_TextMesh.text = $"選択したタグ: {spokenTag}";
             VoiceRecognizer.Instance.keywordRecognizer.Stop();

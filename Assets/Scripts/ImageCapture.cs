@@ -114,13 +114,16 @@ public class ImageCapture : MonoBehaviour {
                     SceneOrganiser.Instance.SetCameraStatus("保存中です");
 
                     // ExecuteImageCaptureAndAnalysisメソッドを呼び出し、secondsBetweenCapturesの間隔でリピートする。
-                    InvokeRepeating("ExecuteImageCaptureAndAnalysis", 0, secondsBetweenCaptures);
+                    // InvokeRepeating("ExecuteImageCaptureAndAnalysis", 0, secondsBetweenCaptures);
+
+                    // ExecuteImageCaptureAndAnalysisメソッドを呼び出す。
+                    ExecuteImageCaptureAndAnalysis();
                 }
                 // 撮影中のフラグがオンの場合の処理
                 else
                 {
                     // 解析プロセスを停止する。
-                    ResetImageCapture();
+                    // ResetImageCapture();
                 }
                 break;
 
@@ -174,6 +177,7 @@ public class ImageCapture : MonoBehaviour {
                 cameraResolutionHeight = targetTexture.height,
                 pixelFormat = CapturePixelFormat.BGRA32
             };
+            Debug.Log("****************" + camParameters.cameraResolutionWidth + "****************" + camParameters.cameraResolutionHeight + "****************");
 
             // 画像を撮影して、アプリケーションの内部フォルダに保存する。
             captureObject.StartPhotoModeAsync(camParameters, delegate (PhotoCapture.PhotoCaptureResult result)
