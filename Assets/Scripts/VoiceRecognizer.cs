@@ -7,17 +7,16 @@ using UnityEngine.Windows.Speech;
 public class VoiceRecognizer : MonoBehaviour {
 
     /// <summary>
-    /// Allows this class to behave like a singleton
+    /// このクラスをシングルトンとしてふるまわせるためのインスタンス
     /// </summary>
     public static VoiceRecognizer Instance;
 
     /// <summary>
-    /// Recognizer class for voice recognition
+    /// キーワードレコナイザーのオブジェクト
     /// </summary>
     internal KeywordRecognizer keywordRecognizer;
 
-    /// <summary>
-    /// List of Keywords registered
+    /// <summary>キーワードとそれに紐づく動作の一覧
     /// </summary>
     private Dictionary<string, Action> _keywords = new Dictionary<string, Action>();
 
@@ -26,6 +25,7 @@ public class VoiceRecognizer : MonoBehaviour {
     /// </summary>
     private void Awake()
     {
+        // このクラスのインスタンスをシングルトンとして利用する。
         Instance = this;
     }
 
@@ -34,41 +34,39 @@ public class VoiceRecognizer : MonoBehaviour {
     /// </summary>
     void Start()
     {
-
+        // 登録されたタグの一覧の取得
         Array tagsArray = Enum.GetValues(typeof(CustomVisionTrainer.Tags));
 
         foreach (object tagWord in tagsArray)
         {
             _keywords.Add(tagWord.ToString(), () =>
             {
-                // When a word is recognized, the following line will be called
+                // 登録されたタグがキーワードとして認識されると、Custom Vision Serviceの学習を行うアクションを登録
                 CustomVisionTrainer.Instance.VerifyTag(tagWord.ToString());
             });
         }
 
-        _keywords.Add("Discard", () =>
+        _keywords.Add("キャンセル", () =>
         {
-            // When a word is recognized, the following line will be called
-            // The user does not want to submit the image
-            // therefore ignore and discard the process
+            // キャンセルというキーワードが認識されると、キャプチャした写真をリセットし、キーワードレコナイザーを停止するアクションを登録
             ImageCapture.Instance.ResetImageCapture();
             keywordRecognizer.Stop();
         });
 
-        //Create the keyword recognizer 
+        // キーワードレコナイザーの生成
         keywordRecognizer = new KeywordRecognizer(_keywords.Keys.ToArray());
 
-        // Register for the OnPhraseRecognized event 
+        // キーワードを認識したときのイベントハンドラを登録
         keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
     }
 
     /// <summary>
-    /// Handler called when a word is recognized
+    /// キーワードが認識されたときに呼び出されるイベントハンドラ
     /// </summary>
     private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
     {
         Action keywordAction;
-        // if the keyword recognized is in our dictionary, call that Action.
+        // 認識されたキーワードが一覧に存在する場合に、そのアクションを呼び出す。
         if (_keywords.TryGetValue(args.text, out keywordAction))
         {
             keywordAction.Invoke();

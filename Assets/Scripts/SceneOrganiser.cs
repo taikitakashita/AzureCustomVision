@@ -3,38 +3,37 @@
 public class SceneOrganiser : MonoBehaviour {
 
     /// <summary>
-    /// Allows this class to behave like a singleton
+    /// このクラスをシングルトンとしてふるまわせるためのインスタンス
     /// </summary>
     public static SceneOrganiser Instance;
 
     /// <summary>
-    /// The cursor object attached to the camera
+    /// カーソルのオブジェクト
     /// </summary>
     internal GameObject cursor;
 
     /// <summary>
-    /// The label used to display the analysis on the objects in the real world
+    /// 解析結果を表示するラベル
     /// </summary>
     internal GameObject label;
 
     /// <summary>
-    /// Object providing the current status of the camera.
+    /// カメラの現在のステータスを表示するオブジェクト
     /// </summary>
     internal TextMesh cameraStatusIndicator;
 
     /// <summary>
-    /// Reference to the last label positioned
+    /// 解析結果を表示するラベル位置
     /// </summary>
     internal Transform lastLabelPlaced;
 
     /// <summary>
-    /// Reference to the last label positioned
+    /// 解析結果を表示するラベルのテキスト
     /// </summary>
     internal TextMesh lastLabelPlacedText;
 
     /// <summary>
-    /// Current threshold accepted for displaying the label
-    /// Reduce this value to display the recognition more often
+    /// 解析結果の閾値
     /// </summary>
     internal float probabilityThreshold = 0.5f;
 
@@ -43,56 +42,55 @@ public class SceneOrganiser : MonoBehaviour {
     /// </summary>
     private void Awake()
     {
-        // Use this class instance as singleton
+        // このクラスのインスタンスをシングルトンとして利用する。
         Instance = this;
 
-        // Add the ImageCapture class to this GameObject
+        // このゲームオブジェクトにImageCaptureクラスを追加
         gameObject.AddComponent<ImageCapture>();
 
-        // Add the CustomVisionAnalyser class to this GameObject
+        // このゲームオブジェクトにCustomVisionAnalyserクラスを追加
         gameObject.AddComponent<CustomVisionAnalyser>();
 
-        // Add the CustomVisionTrainer class to this GameObject
+        // このゲームオブジェクトにCustomVisionTrainerクラスを追加
         gameObject.AddComponent<CustomVisionTrainer>();
 
-        // Add the VoiceRecogniser class to this GameObject
+        // このゲームオブジェクトにVoiceRecognizerクラスを追加
         gameObject.AddComponent<VoiceRecognizer>();
 
-        // Add the CustomVisionObjects class to this GameObject
+        // このゲームオブジェクトにCustomVisionObjectsクラスを追加
         gameObject.AddComponent<CustomVisionObjects>();
 
-        // Create the camera Cursor
+        // カメラのカーソルを作成する。
         cursor = CreateCameraCursor();
 
-        // Load the label prefab as reference
+        // 解析結果を表示するラベルを作成する。
         label = CreateLabel();
 
-        // Create the camera status indicator label, and place it above where predictions
-        // and training UI will appear.
+        // カメラの現在のステータスを表示するテキストを作成します。
         cameraStatusIndicator = CreateTrainingUI("Status Indicator", 0.02f, 0.2f, 3, true);
 
-        // Set camera status indicator to loading.
-        SetCameraStatus("Loading");
+        // カメラの現在のステータスを読み込み中にする。
+        SetCameraStatus("読み込み中です");
     }
 
     /// <summary>
-    /// Spawns cursor for the Main Camera
+    /// カメラのカーソルを作成する。
     /// </summary>
     private GameObject CreateCameraCursor()
     {
-        // Create a sphere as new cursor
+        // カーソルとして利用するスフィアオブジェクトを作成する。
         GameObject newCursor = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 
-        // Attach it to the camera
+        // 作成したスフィアオブジェクトをカメラオブジェクトの子にする。
         newCursor.transform.parent = gameObject.transform;
 
-        // Resize the new cursor
+        // カーソルのサイズを設定する。
         newCursor.transform.localScale = new Vector3(0.02f, 0.02f, 0.02f);
 
-        // Move it to the correct position
+        // カーソルの位置を設定する。
         newCursor.transform.localPosition = new Vector3(0, 0, 4);
 
-        // Set the cursor color to red
+        // カーソルのマテリアルを設定し、色を緑に設定する。
         newCursor.GetComponent<Renderer>().material = new Material(Shader.Find("Diffuse"));
         newCursor.GetComponent<Renderer>().material.color = Color.green;
 
@@ -100,17 +98,17 @@ public class SceneOrganiser : MonoBehaviour {
     }
 
     /// <summary>
-    /// Create the analysis label object
+    /// 解析結果を表示するラベルを作成する。
     /// </summary>
     private GameObject CreateLabel()
     {
-        // Create a sphere as new cursor
+        // ラベル用の新しいゲームオブジェクトを作成する。
         GameObject newLabel = new GameObject();
 
-        // Resize the new cursor
+        // ラベルのサイズを設定する。
         newLabel.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
 
-        // Creating the text of the label
+        // ラベルのテキストの設定を行う。
         TextMesh t = newLabel.AddComponent<TextMesh>();
         t.anchor = TextAnchor.MiddleCenter;
         t.alignment = TextAlignment.Center;
@@ -121,7 +119,7 @@ public class SceneOrganiser : MonoBehaviour {
     }
 
     /// <summary>
-    /// Set the camera status to a provided string. Will be coloured if it matches a keyword.
+    /// カメラのステータスの文字列の表示と文字の色を設定する。
     /// </summary>
     /// <param name="statusText">Input string</param>
     public void SetCameraStatus(string statusText)
@@ -132,33 +130,33 @@ public class SceneOrganiser : MonoBehaviour {
 
             switch (statusText.ToLower())
             {
-                case "loading":
+                case "読み込み中です":
                     message = "yellow";
                     break;
 
-                case "ready":
+                case "準備が完了しました":
                     message = "green";
                     break;
 
-                case "uploading image":
+                case "画像をアップロードしています":
                     message = "red";
                     break;
 
-                case "looping capture":
+                case "保存中です":
                     message = "yellow";
                     break;
 
-                case "analysis":
+                case "解析中です":
                     message = "red";
                     break;
             }
 
-            cameraStatusIndicator.GetComponent<TextMesh>().text = $"Camera Status:\n<color={message}>{statusText}..</color>";
+            cameraStatusIndicator.GetComponent<TextMesh>().text = $"カメラの状態:\n<color={message}>{statusText}...</color>";
         }
     }
 
     /// <summary>
-    /// Instantiate a label in the appropriate location relative to the Main Camera.
+    /// 解析結果のラベルを作成し、ラベルのテキストを取得する。
     /// </summary>
     public void PlaceAnalysisLabel()
     {
@@ -167,7 +165,7 @@ public class SceneOrganiser : MonoBehaviour {
     }
 
     /// <summary>
-    /// Set the Tags as Text of the last label created. 
+    /// 解析結果のデータをラベルに記載する。
     /// </summary>
     public void SetTagsToLastLabel(AnalysisObject analysisObject)
     {
@@ -179,7 +177,7 @@ public class SceneOrganiser : MonoBehaviour {
             {
                 if (p.Probability > 0.02)
                 {
-                    lastLabelPlacedText.text += $"Detected: {p.TagName} {p.Probability.ToString("0.00 \n")}";
+                    lastLabelPlacedText.text += $"検出結果: {p.TagName} {p.Probability.ToString("0.00 \n")}";
                     Debug.Log($"Detected: {p.TagName} {p.Probability.ToString("0.00 \n")}");
                 }
             }
@@ -187,7 +185,7 @@ public class SceneOrganiser : MonoBehaviour {
     }
 
     /// <summary>
-    /// Create a 3D Text Mesh in scene, with various parameters.
+    /// 現在のステータスを表示するテキストを作成します。
     /// </summary>
     /// <param name="name">name of object</param>
     /// <param name="scale">scale of object (i.e. 0.04f)</param>

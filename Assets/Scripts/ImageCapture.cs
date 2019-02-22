@@ -8,47 +8,47 @@ using UnityEngine.XR.WSA.WebCam;
 public class ImageCapture : MonoBehaviour {
 
     /// <summary>
-    /// Allows this class to behave like a singleton
+    /// このクラスをシングルトンとしてふるまわせるためのインスタンス
     /// </summary>
     public static ImageCapture Instance;
 
     /// <summary>
-    /// Keep counts of the taps for image renaming
+    /// 画像の名前の設定で利用するため、タップ数をカウントする。
     /// </summary>
     private int captureCount = 0;
 
     /// <summary>
-    /// Photo Capture object
+    /// 画像用のオブジェクト
     /// </summary>
     private PhotoCapture photoCaptureObject = null;
 
     /// <summary>
-    /// Allows gestures recognition in HoloLens
+    /// ジェスチャーレコナイザーのオブジェクト
     /// </summary>
     private GestureRecognizer recognizer;
 
     /// <summary>
-    /// Loop timer
+    /// 解析の処理の感覚
     /// </summary>
     private float secondsBetweenCaptures = 10f;
 
     /// <summary>
-    /// Application main functionalities switch
+    /// アプリケーションのモード
     /// </summary>
     internal enum AppModes { Analysis, Training }
 
     /// <summary>
-    /// Local variable for current AppMode
+    /// 現在のアプリケーションのモードのプロパティ
     /// </summary>
     internal AppModes AppMode { get; private set; }
 
     /// <summary>
-    /// Flagging if the capture loop is running
+    /// 写真の撮影中かを判定するフラグ
     /// </summary>
     internal bool captureIsActive;
 
     /// <summary>
-    /// File path of current analysed photo
+    /// 現在解析中の写真のパス
     /// </summary>
     internal string filePath = string.Empty;
 
@@ -59,8 +59,8 @@ public class ImageCapture : MonoBehaviour {
     {
         Instance = this;
 
-        // Change this flag to switch between Analysis Mode and Training Mode 
-        AppMode = AppModes.Training;
+        // 解析モードと学習モードを切り替えるフラグの設定
+        AppMode = AppModes.Analysis;
     }
 
     /// <summary>
@@ -68,7 +68,7 @@ public class ImageCapture : MonoBehaviour {
     /// </summary>
     void Start()
     {
-        // Clean up the LocalState folder of this application from all photos stored
+        // このアプリケーションで保存されているすべての写真をクリーンアップ
         DirectoryInfo info = new DirectoryInfo(Application.persistentDataPath);
         var fileInfo = info.GetFiles();
         foreach (var file in fileInfo)
@@ -83,80 +83,86 @@ public class ImageCapture : MonoBehaviour {
             }
         }
 
-        // Subscribing to the Hololens API gesture recognizer to track user gestures
+        // タップ動作を検知するためのジェスチャーレコナイザーの設定と起動
         recognizer = new GestureRecognizer();
         recognizer.SetRecognizableGestures(GestureSettings.Tap);
         recognizer.Tapped += TapHandler;
         recognizer.StartCapturingGestures();
 
-        SceneOrganiser.Instance.SetCameraStatus("Ready");
+        SceneOrganiser.Instance.SetCameraStatus("準備が完了しました");
     }
 
     /// <summary>
-    /// Respond to Tap Input.
+    /// タップ入力時の処理
     /// </summary>
     private void TapHandler(TappedEventArgs obj)
     {
         switch (AppMode)
         {
+            // 解析モードの際の処理
             case AppModes.Analysis:
+                // 撮影中のフラグがオフの場合の処理
                 if (!captureIsActive)
                 {
+                    // 撮影中のフラグをオンにする。
                     captureIsActive = true;
 
-                    // Set the cursor color to red
+                    // カーソルを赤色に変更する。
                     SceneOrganiser.Instance.cursor.GetComponent<Renderer>().material.color = Color.red;
 
-                    // Update camera status to looping capture.
-                    SceneOrganiser.Instance.SetCameraStatus("Looping Capture");
+                    // カメラのステータスを保存中ですにする。
+                    SceneOrganiser.Instance.SetCameraStatus("保存中です");
 
-                    // Begin the capture loop
+                    // ExecuteImageCaptureAndAnalysisメソッドを呼び出し、secondsBetweenCapturesの間隔でリピートする。
                     InvokeRepeating("ExecuteImageCaptureAndAnalysis", 0, secondsBetweenCaptures);
                 }
+                // 撮影中のフラグがオンの場合の処理
                 else
                 {
-                    // The user tapped while the app was analyzing 
-                    // therefore stop the analysis process
+                    // 解析プロセスを停止する。
                     ResetImageCapture();
                 }
                 break;
 
+            // 学習モードの際の処理
             case AppModes.Training:
+                // 撮影中のフラグがオフの場合の処理
                 if (!captureIsActive)
                 {
+                    // 撮影中のフラグをオンにする。
                     captureIsActive = true;
 
-                    // Call the image capture
+                    // ExecuteImageCaptureAndAnalysisメソッドを呼び出す。
                     ExecuteImageCaptureAndAnalysis();
 
-                    // Set the cursor color to red
+                    // カーソルを赤色に変更する。
                     SceneOrganiser.Instance.cursor.GetComponent<Renderer>().material.color = Color.red;
 
-                    // Update camera status to uploading image.
-                    SceneOrganiser.Instance.SetCameraStatus("Uploading Image");
+                    // カメラのステータスをアップロード中にする。
+                    SceneOrganiser.Instance.SetCameraStatus("画像をアップロードしています");
                 }
                 break;
         }
     }
 
     /// <summary>
-    /// Begin process of Image Capturing and send To Azure Custom Vision Service.
+    /// 画像キャプチャのプロセスを開始し、Azure Custom Vision Serviceに送信する。
     /// </summary>
     private void ExecuteImageCaptureAndAnalysis()
     {
-        // Update camera status to analysis.
-        SceneOrganiser.Instance.SetCameraStatus("Analysis");
+        // カメラのステータスを解析中にする。
+        SceneOrganiser.Instance.SetCameraStatus("解析中です");
 
-        // Create a label in world space using the SceneOrganiser class 
-        // Invisible at this point but correctly positioned where the image was taken
+        // 解析結果のラベルを作成し、ラベルのテキストを取得する。
         SceneOrganiser.Instance.PlaceAnalysisLabel();
 
-        // Set the camera resolution to be the highest possible
+        // カメラの解像度を可能な限り高く設定
         Resolution cameraResolution = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).First();
 
+        // カメラの解像度のサイズのテクスチャの設定
         Texture2D targetTexture = new Texture2D(cameraResolution.width, cameraResolution.height);
 
-        // Begin capture process, set the image format
+        // 撮影プロセスを開始し、画像のフォーマットを設定する。
         PhotoCapture.CreateAsync(false, delegate (PhotoCapture captureObject)
         {
             photoCaptureObject = captureObject;
@@ -169,7 +175,7 @@ public class ImageCapture : MonoBehaviour {
                 pixelFormat = CapturePixelFormat.BGRA32
             };
 
-            // Capture the image from the camera and save it in the App internal folder
+            // 画像を撮影して、アプリケーションの内部フォルダに保存する。
             captureObject.StartPhotoModeAsync(camParameters, delegate (PhotoCapture.PhotoCaptureResult result)
             {
                 string filename = string.Format(@"CapturedImage{0}.jpg", captureCount);
@@ -181,7 +187,7 @@ public class ImageCapture : MonoBehaviour {
     }
 
     /// <summary>
-    /// Register the full execution of the Photo Capture. 
+    /// 撮影が完了したら、撮影モードをストップする。
     /// </summary>
     void OnCapturedPhotoToDisk(PhotoCapture.PhotoCaptureResult result)
     {
@@ -191,8 +197,7 @@ public class ImageCapture : MonoBehaviour {
 
 
     /// <summary>
-    /// The camera photo mode has stopped after the capture.
-    /// Begin the Image Analysis process.
+    ///撮影モードを停止したあと、画像解析プロセスを開始する。
     /// </summary>
     void OnStoppedPhotoMode(PhotoCapture.PhotoCaptureResult result)
     {
@@ -217,19 +222,19 @@ public class ImageCapture : MonoBehaviour {
     }
 
     /// <summary>
-    /// Stops all capture pending actions
+    /// 保留中のアクションを停止する。
     /// </summary>
     internal void ResetImageCapture()
     {
         captureIsActive = false;
 
-        // Set the cursor color to green
+        // カーソルを緑色にする。
         SceneOrganiser.Instance.cursor.GetComponent<Renderer>().material.color = Color.green;
 
-        // Update camera status to ready.
-        SceneOrganiser.Instance.SetCameraStatus("Ready");
+        // カメラのステータスを準備完了にする。
+        SceneOrganiser.Instance.SetCameraStatus("準備が完了しました");
 
-        // Stop the capture loop if active
+        // 保留中のアクションを停止する。
         CancelInvoke();
     }
 }

@@ -9,37 +9,37 @@ using UnityEngine.Networking;
 public class CustomVisionTrainer : MonoBehaviour {
 
     /// <summary>
-    /// Allows this class to behave like a singleton
+    /// このクラスをシングルトンとしてふるまわせるためのインスタンス
     /// </summary>
     public static CustomVisionTrainer Instance;
 
     /// <summary>
-    /// Custom Vision Service URL root
+    /// Custom Vision Serviceの学習用のエンドポイントのURLの設定
     /// </summary>
     private string url = "https://japaneast.api.cognitive.microsoft.com/customvision/v2.2/Training/projects/";
 
     /// <summary>
-    /// Insert your prediction key here
+    /// 学習用のサブスクリプションキーの設定
     /// </summary>
     private string trainingKey = "83eed7ba23234464972635d8a6269105";
 
     /// <summary>
-    /// Insert your Project Id here
+    /// Custom Vision ServiceのプロジェクトIDを設定
     /// </summary>
     private string projectId = "2880926f-ee4b-40d5-a025-4c62aff9aac2";
 
     /// <summary>
-    /// Byte array of the image to submit for analysis
+    /// 撮影した画像を送信する際のバイト配列
     /// </summary>
     internal byte[] imageBytes;
 
     /// <summary>
-    /// The Tags accepted
+    /// タグの登録
     /// </summary>
-    internal enum Tags { Mouse, Keyboard }
+    internal enum Tags { マウス, キーボード }
 
     /// <summary>
-    /// The UI displaying the training Chapters
+    /// 学習の際の処理のプロセス内容を表示するテキスト
     /// </summary>
     private TextMesh trainingUI_TextMesh;
 
@@ -48,6 +48,7 @@ public class CustomVisionTrainer : MonoBehaviour {
     /// </summary>
     private void Awake()
     {
+        // このクラスのインスタンスをシングルトンとして利用する。
         Instance = this;
     }
 
@@ -56,38 +57,39 @@ public class CustomVisionTrainer : MonoBehaviour {
     /// </summary>
     private void Start()
     {
+        // 学習の現在のステータスを表示するテキストを作成します。
         trainingUI_TextMesh = SceneOrganiser.Instance.CreateTrainingUI("TrainingUI", 0.04f, 0, 4, false);
     }
 
+    // 学習の現在のステータスを表示し、キーワードレコナイザーを起動する。
     internal void RequestTagSelection()
     {
         trainingUI_TextMesh.gameObject.SetActive(true);
-        trainingUI_TextMesh.text = $" \nUse voice command \nto choose between the following tags: \nMouse\nKeyboard \nor say Discard";
+        trainingUI_TextMesh.text = $" \n以下のタグから音声で選択してください。: \nマウス\nキーボード \nもしくはキャンセル";
 
         VoiceRecognizer.Instance.keywordRecognizer.Start();
     }
 
     /// <summary>
-    /// Verify voice input against stored tags.
-    /// If positive, it will begin the Service training process.
+    /// 登録されたタグがキーワードとして認識されると、Custom Vision Serviceの学習を開始
     /// </summary>
     internal void VerifyTag(string spokenTag)
     {
-        if (spokenTag == Tags.Mouse.ToString() || spokenTag == Tags.Keyboard.ToString())
+        if (spokenTag == Tags.マウス.ToString() || spokenTag == Tags.キーボード.ToString())
         {
-            trainingUI_TextMesh.text = $"Tag chosen: {spokenTag}";
+            trainingUI_TextMesh.text = $"選択したタグ: {spokenTag}";
             VoiceRecognizer.Instance.keywordRecognizer.Stop();
             StartCoroutine(SubmitImageForTraining(ImageCapture.Instance.filePath, spokenTag));
         }
     }
 
     /// <summary>
-    /// Call the Custom Vision Service to submit the image.
+    /// Custom Vision Serviceに画像を送信する。
     /// </summary>
     public IEnumerator SubmitImageForTraining(string imagePath, string tag)
     {
         yield return new WaitForSeconds(2);
-        trainingUI_TextMesh.text = $"Submitting Image \nwith tag: {tag} \nto Custom Vision Service";
+        trainingUI_TextMesh.text = $"{tag} \nの画像をCustom Vision Serviceに送信します。";
         string imageId = string.Empty;
         string tagId = string.Empty;
 
@@ -98,9 +100,12 @@ public class CustomVisionTrainer : MonoBehaviour {
             www.SetRequestHeader("Training-Key", trainingKey);
             www.downloadHandler = new DownloadHandlerBuffer();
             yield return www.SendWebRequest();
-            string jsonResponse = www.downloadHandler.text;
 
-            Tags_RootObject tagRootObject = JsonConvert.DeserializeObject<Tags_RootObject>(jsonResponse);
+            string jsonResponse = www.downloadHandler.text;
+            Debug.Log("***" + jsonResponse);
+
+            Tags_RootObject tagRootObject = new Tags_RootObject();
+            tagRootObject.Tags = JsonConvert.DeserializeObject<List<TagOfProject>>(jsonResponse);
 
             foreach (TagOfProject tOP in tagRootObject.Tags)
             {
@@ -110,7 +115,7 @@ public class CustomVisionTrainer : MonoBehaviour {
                 }
             }
         }
-
+        
         // Creating the image object to send for training
         List<IMultipartFormSection> multipartList = new List<IMultipartFormSection>();
         MultipartObject multipartObject = new MultipartObject();
@@ -143,19 +148,19 @@ public class CustomVisionTrainer : MonoBehaviour {
             ImageRootObject m = JsonConvert.DeserializeObject<ImageRootObject>(jsonResponse);
             imageId = m.Images[0].Image.Id;
         }
-        trainingUI_TextMesh.text = "Image uploaded";
+
+        trainingUI_TextMesh.text = "画像をCustom Vision Serviceに送信しました。";
         StartCoroutine(TrainCustomVisionProject());
     }
 
     /// <summary>
-    /// Call the Custom Vision Service to train the Service.
-    /// It will generate a new Iteration in the Service
+    /// Custom Vision Serviceの分析モデルの学習を行う。
     /// </summary>
     public IEnumerator TrainCustomVisionProject()
     {
         yield return new WaitForSeconds(2);
 
-        trainingUI_TextMesh.text = "Training Custom Vision Service";
+        trainingUI_TextMesh.text = "Custom Vision Serviceの学習中です。";
 
         WWWForm webForm = new WWWForm();
 
@@ -175,7 +180,7 @@ public class CustomVisionTrainer : MonoBehaviour {
 
             if (www.isDone)
             {
-                trainingUI_TextMesh.text = "Custom Vision Trained";
+                trainingUI_TextMesh.text = "Custom Vision Serviceの学習が終わりました。";
 
                 // Since the Service has a limited number of iterations available,
                 // we need to set the last trained iteration as default
@@ -186,12 +191,12 @@ public class CustomVisionTrainer : MonoBehaviour {
     }
 
     /// <summary>
-    /// Set the newly created iteration as Default
+    /// 作成した学習モデルをデフォルト利用に設定
     /// </summary>
     private IEnumerator SetDefaultIteration(Iteration iteration)
     {
         yield return new WaitForSeconds(5);
-        trainingUI_TextMesh.text = "Setting default iteration";
+        trainingUI_TextMesh.text = "既定の学習済みモデルを設定しています。";
 
         // Set the last trained iteration to default
         iteration.IsDefault = true;
@@ -216,20 +221,20 @@ public class CustomVisionTrainer : MonoBehaviour {
 
             if (www.isDone)
             {
-                trainingUI_TextMesh.text = "Default iteration is set \nDeleting Unused Iteration";
+                trainingUI_TextMesh.text = "既定の学習済みモデルの設定が完了しました。 \n利用していない学習モデルを削除します。";
                 StartCoroutine(DeletePreviousIteration(iteration));
             }
         }
     }
 
     /// <summary>
-    /// Delete the previous non-default iteration.
+    /// デフォルト利用出ない不要な学習モデルを削除
     /// </summary>
     public IEnumerator DeletePreviousIteration(Iteration iteration)
     {
         yield return new WaitForSeconds(5);
 
-        trainingUI_TextMesh.text = "Deleting Unused \nIteration";
+        trainingUI_TextMesh.text = "利用していない学習モデルを削除します。";
 
         string iterationToDeleteId = string.Empty;
 
@@ -267,9 +272,9 @@ public class CustomVisionTrainer : MonoBehaviour {
             yield return www2.SendWebRequest();
             string jsonResponse = www2.downloadHandler.text;
 
-            trainingUI_TextMesh.text = "Iteration Deleted";
+            trainingUI_TextMesh.text = "利用していない学習モデルを削除しました。";
             yield return new WaitForSeconds(2);
-            trainingUI_TextMesh.text = "Ready for next \ncapture";
+            trainingUI_TextMesh.text = "準備が完了しました。";
 
             yield return new WaitForSeconds(2);
             trainingUI_TextMesh.text = "";
@@ -278,7 +283,7 @@ public class CustomVisionTrainer : MonoBehaviour {
     }
 
     /// <summary>
-    /// Returns the contents of the specified image file as a byte array.
+    /// 撮影した画像の内容をバイト配列として返す。
     /// </summary>
     static byte[] GetImageAsByteArray(string imageFilePath)
     {

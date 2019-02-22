@@ -7,22 +7,22 @@ using Newtonsoft.Json;
 public class CustomVisionAnalyser : MonoBehaviour {
 
     /// <summary>
-    /// Unique instance of this class
+    /// このクラスをシングルトンとしてふるまわせるためのインスタンス
     /// </summary>
     public static CustomVisionAnalyser Instance;
 
     /// <summary>
-    /// Insert your Prediction Key here
+    /// 解析用のサブスクリプションキーの設定
     /// </summary>
     private string predictionKey = "44ccb45be04b4c61abeee91ba3917623";
 
     /// <summary>
-    /// Insert your prediction endpoint here
+    /// Custom Vision Serviceの解析用のエンドポイントのURLの設定
     /// </summary>
     private string predictionEndpoint = "https://japaneast.api.cognitive.microsoft.com/customvision/v2.0/Prediction/2880926f-ee4b-40d5-a025-4c62aff9aac2/image";
 
     /// <summary>
-    /// Byte array of the image to submit for analysis
+    /// 撮影した画像を送信する際のバイト配列
     /// </summary>
     [HideInInspector] public byte[] imageBytes;
 
@@ -31,12 +31,12 @@ public class CustomVisionAnalyser : MonoBehaviour {
     /// </summary>
     private void Awake()
     {
-        // Allows this instance to behave like a singleton
+        // このクラスのインスタンスをシングルトンとして利用する。
         Instance = this;
     }
 
     /// <summary>
-    /// Call the Computer Vision Service to submit the image.
+    /// Custom Vision Serviceに画像を送信し、タグ名と信頼度を取得し、解析結果表示用のテキストに記載する。
     /// </summary>
     public IEnumerator AnalyseLastImageCaptured(string imagePath)
     {
@@ -73,7 +73,7 @@ public class CustomVisionAnalyser : MonoBehaviour {
     }
 
     /// <summary>
-    /// Returns the contents of the specified image file as a byte array.
+    /// 撮影した画像の内容をバイト配列として返す。
     /// </summary>
     static byte[] GetImageAsByteArray(string imageFilePath)
     {
