@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\bin\x86\Release\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-02-22T08:24:16.243</Modified>
+      <Modified>2019-02-26T12:08:24.342</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\bin\x86\Release\AzureCustomVision.exe">
       <PackagePath>entrypoint\AzureCustomVision.exe</PackagePath>
-      <Modified>2019-02-22T08:22:39.292</Modified>
+      <Modified>2019-02-26T12:07:48.408</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\.nuget\packages\microsoft.applicationinsights\1.0.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -504,7 +504,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\Resource.res">
       <PackagePath>Resource.res</PackagePath>
-      <Modified>2019-02-22T08:21:27.750</Modified>
+      <Modified>2019-02-26T12:07:19.365</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
@@ -542,15 +542,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\Data\boot.config">
       <PackagePath>Data\boot.config</PackagePath>
-      <Modified>2019-02-22T08:20:38.358</Modified>
+      <Modified>2019-02-26T12:06:30.645</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\Data\globalgamemanagers">
       <PackagePath>Data\globalgamemanagers</PackagePath>
-      <Modified>2019-02-22T08:20:37.681</Modified>
+      <Modified>2019-02-26T12:06:29.949</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\Data\level0">
       <PackagePath>Data\level0</PackagePath>
-      <Modified>2019-02-22T08:20:36.573</Modified>
+      <Modified>2019-02-26T12:06:28.815</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\Data\Resources\unity default resources">
       <PackagePath>Data\Resources\unity default resources</PackagePath>
@@ -558,23 +558,23 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\Data\Resources\unity_builtin_extra">
       <PackagePath>Data\Resources\unity_builtin_extra</PackagePath>
-      <Modified>2019-02-22T08:20:38.355</Modified>
+      <Modified>2019-02-26T12:06:30.645</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\Data\globalgamemanagers.assets">
       <PackagePath>Data\globalgamemanagers.assets</PackagePath>
-      <Modified>2019-02-22T08:20:37.790</Modified>
+      <Modified>2019-02-26T12:06:30.075</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\Data\sharedassets0.assets">
       <PackagePath>Data\sharedassets0.assets</PackagePath>
-      <Modified>2019-02-22T08:20:37.821</Modified>
+      <Modified>2019-02-26T12:06:30.105</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\Data\level0.resS">
       <PackagePath>Data\level0.resS</PackagePath>
-      <Modified>2019-02-22T08:20:36.572</Modified>
+      <Modified>2019-02-26T12:06:28.815</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\Data\managedAssemblies.txt">
       <PackagePath>Data\managedAssemblies.txt</PackagePath>
-      <Modified>2019-02-22T08:21:27.682</Modified>
+      <Modified>2019-02-26T12:07:19.298</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17763.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -582,227 +582,227 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\bin\x86\Release\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2019-02-22T08:22:40.145</Modified>
+      <Modified>2019-02-26T12:07:49.303</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.TilemapModule.dll">
       <PackagePath>UnityEngine.TilemapModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.475</Modified>
+      <Modified>2019-02-26T12:08:22.724</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.TextRenderingModule.dll">
       <PackagePath>UnityEngine.TextRenderingModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.488</Modified>
+      <Modified>2019-02-26T12:08:22.736</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.TerrainPhysicsModule.dll">
       <PackagePath>UnityEngine.TerrainPhysicsModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.495</Modified>
+      <Modified>2019-02-26T12:08:22.742</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.TerrainModule.dll">
       <PackagePath>UnityEngine.TerrainModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.506</Modified>
+      <Modified>2019-02-26T12:08:22.751</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.SharedInternalsModule.dll">
       <PackagePath>UnityEngine.SharedInternalsModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.514</Modified>
+      <Modified>2019-02-26T12:08:22.759</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.SpriteMaskModule.dll">
       <PackagePath>UnityEngine.SpriteMaskModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.521</Modified>
+      <Modified>2019-02-26T12:08:22.765</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.SpriteShapeModule.dll">
       <PackagePath>UnityEngine.SpriteShapeModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.527</Modified>
+      <Modified>2019-02-26T12:08:22.772</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.StyleSheetsModule.dll">
       <PackagePath>UnityEngine.StyleSheetsModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.536</Modified>
+      <Modified>2019-02-26T12:08:22.779</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.UIElementsModule.dll">
       <PackagePath>UnityEngine.UIElementsModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.564</Modified>
+      <Modified>2019-02-26T12:08:22.837</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.UnityWebRequestWWWModule.dll">
       <PackagePath>UnityEngine.UnityWebRequestWWWModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.590</Modified>
+      <Modified>2019-02-26T12:08:22.844</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.VehiclesModule.dll">
       <PackagePath>UnityEngine.VehiclesModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.597</Modified>
+      <Modified>2019-02-26T12:08:22.851</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.VideoModule.dll">
       <PackagePath>UnityEngine.VideoModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.606</Modified>
+      <Modified>2019-02-26T12:08:22.859</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.VRModule.dll">
       <PackagePath>UnityEngine.VRModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.626</Modified>
+      <Modified>2019-02-26T12:08:22.884</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.WebModule.dll">
       <PackagePath>UnityEngine.WebModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.635</Modified>
+      <Modified>2019-02-26T12:08:22.895</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.WindModule.dll">
       <PackagePath>UnityEngine.WindModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.641</Modified>
+      <Modified>2019-02-26T12:08:22.902</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.UnityWebRequestTextureModule.dll">
       <PackagePath>UnityEngine.UnityWebRequestTextureModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.647</Modified>
+      <Modified>2019-02-26T12:08:22.909</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.UIModule.dll">
       <PackagePath>UnityEngine.UIModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.656</Modified>
+      <Modified>2019-02-26T12:08:22.917</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.UNETModule.dll">
       <PackagePath>UnityEngine.UNETModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.668</Modified>
+      <Modified>2019-02-26T12:08:22.939</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.UnityAnalyticsModule.dll">
       <PackagePath>UnityEngine.UnityAnalyticsModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.675</Modified>
+      <Modified>2019-02-26T12:08:22.946</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.UnityConnectModule.dll">
       <PackagePath>UnityEngine.UnityConnectModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.682</Modified>
+      <Modified>2019-02-26T12:08:22.959</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.UnityWebRequestAudioModule.dll">
       <PackagePath>UnityEngine.UnityWebRequestAudioModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.688</Modified>
+      <Modified>2019-02-26T12:08:22.965</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.UnityWebRequestModule.dll">
       <PackagePath>UnityEngine.UnityWebRequestModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.697</Modified>
+      <Modified>2019-02-26T12:08:22.974</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.ScreenCaptureModule.dll">
       <PackagePath>UnityEngine.ScreenCaptureModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.704</Modified>
+      <Modified>2019-02-26T12:08:22.979</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.AssetBundleModule.dll">
       <PackagePath>UnityEngine.AssetBundleModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.710</Modified>
+      <Modified>2019-02-26T12:08:22.985</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.AudioModule.dll">
       <PackagePath>UnityEngine.AudioModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.723</Modified>
+      <Modified>2019-02-26T12:08:22.995</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.ClothModule.dll">
       <PackagePath>UnityEngine.ClothModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.730</Modified>
+      <Modified>2019-02-26T12:08:23.002</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.CoreModule.dll">
       <PackagePath>UnityEngine.CoreModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.928</Modified>
+      <Modified>2019-02-26T12:08:23.216</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.CrashReportingModule.dll">
       <PackagePath>UnityEngine.CrashReportingModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.935</Modified>
+      <Modified>2019-02-26T12:08:23.223</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.DirectorModule.dll">
       <PackagePath>UnityEngine.DirectorModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.942</Modified>
+      <Modified>2019-02-26T12:08:23.229</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.ARModule.dll">
       <PackagePath>UnityEngine.ARModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.951</Modified>
+      <Modified>2019-02-26T12:08:23.238</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.AccessibilityModule.dll">
       <PackagePath>UnityEngine.AccessibilityModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.957</Modified>
+      <Modified>2019-02-26T12:08:23.245</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.AIModule.dll">
       <PackagePath>UnityEngine.AIModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.966</Modified>
+      <Modified>2019-02-26T12:08:23.254</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.AnimationModule.dll">
       <PackagePath>UnityEngine.AnimationModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.982</Modified>
+      <Modified>2019-02-26T12:08:23.269</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.dll">
       <PackagePath>UnityEngine.dll</PackagePath>
-      <Modified>2019-02-22T08:21:00.640</Modified>
+      <Modified>2019-02-26T12:06:53.065</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.ParticlesLegacyModule.dll">
       <PackagePath>UnityEngine.ParticlesLegacyModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.991</Modified>
+      <Modified>2019-02-26T12:08:23.277</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.ParticleSystemModule.dll">
       <PackagePath>UnityEngine.ParticleSystemModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:15.018</Modified>
+      <Modified>2019-02-26T12:08:23.301</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.PerformanceReportingModule.dll">
       <PackagePath>UnityEngine.PerformanceReportingModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:15.025</Modified>
+      <Modified>2019-02-26T12:08:23.308</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.Physics2DModule.dll">
       <PackagePath>UnityEngine.Physics2DModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:15.040</Modified>
+      <Modified>2019-02-26T12:08:23.323</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.PhysicsModule.dll">
       <PackagePath>UnityEngine.PhysicsModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:15.057</Modified>
+      <Modified>2019-02-26T12:08:23.336</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.JSONSerializeModule.dll">
       <PackagePath>UnityEngine.JSONSerializeModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:15.064</Modified>
+      <Modified>2019-02-26T12:08:23.343</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.GameCenterModule.dll">
       <PackagePath>UnityEngine.GameCenterModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:15.076</Modified>
+      <Modified>2019-02-26T12:08:23.352</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.GridModule.dll">
       <PackagePath>UnityEngine.GridModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:15.083</Modified>
+      <Modified>2019-02-26T12:08:23.359</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.ImageConversionModule.dll">
       <PackagePath>UnityEngine.ImageConversionModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:15.088</Modified>
+      <Modified>2019-02-26T12:08:23.367</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.IMGUIModule.dll">
       <PackagePath>UnityEngine.IMGUIModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:15.309</Modified>
+      <Modified>2019-02-26T12:08:23.385</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.InputModule.dll">
       <PackagePath>UnityEngine.InputModule.dll</PackagePath>
-      <Modified>2019-02-22T08:24:15.317</Modified>
+      <Modified>2019-02-26T12:08:23.393</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.Timeline.dll">
       <PackagePath>UnityEngine.Timeline.dll</PackagePath>
-      <Modified>2019-02-22T08:24:15.365</Modified>
+      <Modified>2019-02-26T12:08:23.430</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\nunit.framework.dll">
       <PackagePath>nunit.framework.dll</PackagePath>
-      <Modified>2019-02-22T08:24:15.418</Modified>
+      <Modified>2019-02-26T12:08:23.469</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.UI.dll">
       <PackagePath>UnityEngine.UI.dll</PackagePath>
-      <Modified>2019-02-22T08:24:15.514</Modified>
+      <Modified>2019-02-26T12:08:23.541</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.SpatialTracking.dll">
       <PackagePath>UnityEngine.SpatialTracking.dll</PackagePath>
-      <Modified>2019-02-22T08:24:15.525</Modified>
+      <Modified>2019-02-26T12:08:23.552</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.Analytics.dll">
       <PackagePath>UnityEngine.Analytics.dll</PackagePath>
-      <Modified>2019-02-22T08:24:15.539</Modified>
+      <Modified>2019-02-26T12:08:23.565</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.HoloLens.dll">
       <PackagePath>UnityEngine.HoloLens.dll</PackagePath>
-      <Modified>2019-02-22T08:24:15.553</Modified>
+      <Modified>2019-02-26T12:08:23.580</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.StandardEvents.dll">
       <PackagePath>UnityEngine.StandardEvents.dll</PackagePath>
-      <Modified>2019-02-22T08:24:15.566</Modified>
+      <Modified>2019-02-26T12:08:23.592</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\UnityEngine.Networking.dll">
       <PackagePath>UnityEngine.Networking.dll</PackagePath>
-      <Modified>2019-02-22T08:24:15.623</Modified>
+      <Modified>2019-02-26T12:08:23.646</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\Assembly-CSharp.dll">
       <PackagePath>Assembly-CSharp.dll</PackagePath>
-      <Modified>2019-02-22T08:24:14.462</Modified>
+      <Modified>2019-02-26T12:08:22.712</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\31673.QNPBBL1810002\Desktop\UnityProject\AzureCustomVision\App\AzureCustomVision\bin\x86\Release\Core\AzureCustomVision.exe">
       <PackagePath>AzureCustomVision.exe</PackagePath>
-      <Modified>2019-02-22T08:24:16.234</Modified>
+      <Modified>2019-02-26T12:08:24.333</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

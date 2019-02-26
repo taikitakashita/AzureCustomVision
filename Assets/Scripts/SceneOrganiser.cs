@@ -60,6 +60,9 @@ public class SceneOrganiser : MonoBehaviour {
         // このゲームオブジェクトにCustomVisionObjectsクラスを追加
         gameObject.AddComponent<CustomVisionObjects>();
 
+        // このゲームオブジェクトにCustomVisionObjectsクラスを追加
+        gameObject.AddComponent<FaceDetect>();
+
         // カメラのカーソルを作成する。
         cursor = CreateCameraCursor();
 
@@ -182,6 +185,17 @@ public class SceneOrganiser : MonoBehaviour {
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// 写真中に顔が存在しないことをラベルに記載する
+    /// </summary>
+    public void SetNoFaceToLastLabel()
+    {
+        lastLabelPlacedText = lastLabelPlaced.GetComponent<TextMesh>();
+
+        lastLabelPlacedText.text += $"撮影した範囲に人の顔が存在しません。";
+        Debug.Log($"撮影した範囲に人の顔が存在しません。");
     }
 
     /// <summary>

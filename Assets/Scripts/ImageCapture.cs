@@ -214,8 +214,11 @@ public class ImageCapture : MonoBehaviour {
         switch (AppMode)
         {
             case AppModes.Analysis:
-                // Call the image analysis
-                StartCoroutine(CustomVisionAnalyser.Instance.AnalyseLastImageCaptured(filePath));
+                Debug.Log(filePath);
+                Debug.Log("*************顔を検出しているか判定を開始");
+
+                StartCoroutine(FaceDetect.Instance.DetectFacesFromImage(filePath));
+
                 break;
 
             case AppModes.Training:
