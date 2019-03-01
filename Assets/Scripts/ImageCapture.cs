@@ -164,7 +164,7 @@ public class ImageCapture : MonoBehaviour {
 
         // カメラの解像度のサイズのテクスチャの設定
         Texture2D targetTexture = new Texture2D(cameraResolution.width, cameraResolution.height);
-
+        Debug.Log(cameraResolution.width + "+++++++++++" + cameraResolution.height);
         // 撮影プロセスを開始し、画像のフォーマットを設定する。
         PhotoCapture.CreateAsync(false, delegate (PhotoCapture captureObject)
         {
@@ -177,14 +177,16 @@ public class ImageCapture : MonoBehaviour {
                 cameraResolutionHeight = targetTexture.height,
                 pixelFormat = CapturePixelFormat.BGRA32
             };
-            Debug.Log("****************" + camParameters.cameraResolutionWidth + "****************" + camParameters.cameraResolutionHeight + "****************");
 
             // 画像を撮影して、アプリケーションの内部フォルダに保存する。
             captureObject.StartPhotoModeAsync(camParameters, delegate (PhotoCapture.PhotoCaptureResult result)
             {
+                Debug.Log(result.success);
                 string filename = string.Format(@"CapturedImage{0}.jpg", captureCount);
                 filePath = Path.Combine(Application.persistentDataPath, filename);
                 captureCount++;
+                Debug.Log("撮影処理開始");
+                Debug.Log(filePath);
                 photoCaptureObject.TakePhotoAsync(filePath, PhotoCaptureFileOutputFormat.JPG, OnCapturedPhotoToDisk);
             });
         });
@@ -195,6 +197,7 @@ public class ImageCapture : MonoBehaviour {
     /// </summary>
     void OnCapturedPhotoToDisk(PhotoCapture.PhotoCaptureResult result)
     {
+        Debug.Log("撮影終了処理開始");
         // Call StopPhotoMode once the image has successfully captured
         photoCaptureObject.StopPhotoModeAsync(OnStoppedPhotoMode);
     }
@@ -205,7 +208,7 @@ public class ImageCapture : MonoBehaviour {
     /// </summary>
     void OnStoppedPhotoMode(PhotoCapture.PhotoCaptureResult result)
     {
-        Debug.LogFormat("Stopped Photo Mode");
+        Debug.LogFormat("撮影終了");
 
         // Dispose from the object in memory and request the image analysis 
         photoCaptureObject.Dispose();
@@ -214,7 +217,6 @@ public class ImageCapture : MonoBehaviour {
         switch (AppMode)
         {
             case AppModes.Analysis:
-                Debug.Log(filePath);
                 Debug.Log("*************顔を検出しているか判定を開始");
 
                 StartCoroutine(FaceDetect.Instance.DetectFacesFromImage(filePath));

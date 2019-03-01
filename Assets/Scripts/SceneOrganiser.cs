@@ -70,7 +70,7 @@ public class SceneOrganiser : MonoBehaviour {
         label = CreateLabel();
 
         // カメラの現在のステータスを表示するテキストを作成します。
-        cameraStatusIndicator = CreateTrainingUI("Status Indicator", 0.02f, 0.2f, 3, true);
+        cameraStatusIndicator = CreateTrainingUI("Status Indicator", 0.04f, 0.2f, 3, true);
 
         // カメラの現在のステータスを読み込み中にする。
         SetCameraStatus("読み込み中です");
@@ -88,10 +88,10 @@ public class SceneOrganiser : MonoBehaviour {
         newCursor.transform.parent = gameObject.transform;
 
         // カーソルのサイズを設定する。
-        newCursor.transform.localScale = new Vector3(0.02f, 0.02f, 0.02f);
+        newCursor.transform.localScale = new Vector3(0.03f, 0.03f, 0.03f);
 
         // カーソルの位置を設定する。
-        newCursor.transform.localPosition = new Vector3(0, 0, 4);
+        newCursor.transform.localPosition = new Vector3(0, 0, 3);
 
         // カーソルのマテリアルを設定し、色を緑に設定する。
         newCursor.GetComponent<Renderer>().material = new Material(Shader.Find("Diffuse"));
@@ -109,13 +109,13 @@ public class SceneOrganiser : MonoBehaviour {
         GameObject newLabel = new GameObject();
 
         // ラベルのサイズを設定する。
-        newLabel.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+        newLabel.transform.localScale = new Vector3(0.02f, 0.02f, 0.02f);
 
         // ラベルのテキストの設定を行う。
         TextMesh t = newLabel.AddComponent<TextMesh>();
         t.anchor = TextAnchor.MiddleCenter;
         t.alignment = TextAlignment.Center;
-        t.fontSize = 50;
+        t.fontSize = 48;
         t.text = "";
 
         return newLabel;
@@ -163,7 +163,9 @@ public class SceneOrganiser : MonoBehaviour {
     /// </summary>
     public void PlaceAnalysisLabel()
     {
-        lastLabelPlaced = Instantiate(label.transform, cursor.transform.position, transform.rotation);
+        Vector3 LabelPosition = cursor.transform.position;
+        LabelPosition.y -= (float)0.1;
+        lastLabelPlaced = Instantiate(label.transform, LabelPosition, transform.rotation);
         lastLabelPlacedText = lastLabelPlaced.GetComponent<TextMesh>();
     }
 
@@ -176,6 +178,9 @@ public class SceneOrganiser : MonoBehaviour {
 
         if (analysisObject.Predictions != null)
         {
+            lastLabelPlacedText.text += $"検出結果: {analysisObject.Predictions[0].TagName} {analysisObject.Predictions[0].Probability.ToString("0.00 \n")}";
+            Debug.Log($"Detected: {analysisObject.Predictions[0].TagName} {analysisObject.Predictions[0].Probability.ToString("0.00 \n")}");
+            /*
             foreach (Prediction p in analysisObject.Predictions)
             {
                 if (p.Probability > 0.02)
@@ -184,6 +189,7 @@ public class SceneOrganiser : MonoBehaviour {
                     Debug.Log($"Detected: {p.TagName} {p.Probability.ToString("0.00 \n")}");
                 }
             }
+            */
         }
     }
 
@@ -194,8 +200,8 @@ public class SceneOrganiser : MonoBehaviour {
     {
         lastLabelPlacedText = lastLabelPlaced.GetComponent<TextMesh>();
 
-        lastLabelPlacedText.text += $"撮影した範囲に人の顔が存在しません。";
-        Debug.Log($"撮影した範囲に人の顔が存在しません。");
+        lastLabelPlacedText.text += $"撮影範囲に人の顔が存在しません。";
+        Debug.Log($"撮影範囲に人の顔が存在しません。");
     }
 
     /// <summary>
@@ -218,6 +224,7 @@ public class SceneOrganiser : MonoBehaviour {
         TextMesh textMesh = display.GetComponent<TextMesh>();
         textMesh.anchor = TextAnchor.MiddleCenter;
         textMesh.alignment = TextAlignment.Center;
+        textMesh.fontSize = 26;
         return textMesh;
     }
 }
